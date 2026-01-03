@@ -1,0 +1,26 @@
+{
+  "name": "cryptoscanner",
+  "version": "2.0.0",
+  "description": "Secure Chat Application with End-to-End Encryption",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build required'",
+    "start": "vercel start"
+  },
+  "keywords": [
+    "chat",
+    "encryption",
+    "secure",
+    "messaging",
+    "python",
+    "flask"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^latest"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

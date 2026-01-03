@@ -1,0 +1,52 @@
+{
+  "version": 2,
+  "env": {
+    "JWT_SECRET_KEY": "@jwt_secret",
+    "FLASK_ENV": "production",
+    "DB_PATH": "/tmp/secure_chat.db",
+    "LOG_PATH": "/tmp/logs",
+    "UPLOAD_FOLDER": "/tmp/uploads",
+    "MAX_CONTENT_LENGTH": "16777216"
+  },
+  "build": {
+    "env": {
+      "PYTHONPATH": "/var/task"
+    }
+  },
+  "functions": {
+    "api/**/*.py": {
+      "memory": 3008,
+      "maxDuration": 30,
+      "runtime": "python3.12"
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
